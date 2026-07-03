@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>澳门生物多样性点位详情图</title>
+    <title>澳門生物多樣性點位詳情圖</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -233,8 +233,8 @@
     <div id="map"></div>
 
     <div class="panel">
-      <h1>澳门生物多样性点位详情图</h1>
-      <div class="sub">每个圆点代表一条观测记录</div>
+      <h1>澳門生物多樣性點位詳情圖</h1>
+      <div class="sub">每個圓點代表一條觀測記錄</div>
 
       <div class="toggle" id="yearToggle">
         <button data-year="2025">2025 年</button>
@@ -242,28 +242,28 @@
       </div>
 
       <div class="toggle" id="statusToggle">
-        <button data-status="clean" class="active">正确数据</button>
-        <button data-status="abnormal">异常数据</button>
+        <button data-status="clean" class="active">正確數據</button>
+        <button data-status="abnormal">異常數據</button>
       </div>
 
-      <a class="link" href="index.html">返回热点图</a>
+      <a class="link" href="澳门生物多样性热点图.html">返回熱點圖</a>
 
       <div class="stat">
-        <span>当前显示点位</span><b id="visibleCount">—</b>
+        <span>當前顯示點位</span><b id="visibleCount">—</b>
       </div>
 
-      <div class="sec-title">物种类别</div>
+      <div class="sec-title">物種類別</div>
       <div class="cat-actions">
-        <button id="selAll">全选</button>
-        <button id="selNone">全不选</button>
+        <button id="selAll">全選</button>
+        <button id="selNone">全不選</button>
       </div>
       <ul class="cat-list" id="catList"></ul>
       <div class="hint">
-        鼠标悬停或点击点位可查看物种、分类、日期和坐标。异常数据点用红色系强调。
+        滑鼠懸停或點擊點位可查看物種、分類、日期和座標。異常數據點用紅色系強調。
       </div>
     </div>
 
-    <div class="loading" id="loading">正在加载点位…</div>
+    <div class="loading" id="loading">正在載入點位…</div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="热点图数据.js"></script>
@@ -343,7 +343,7 @@
             rec.taxon_species_name ||
             rec.taxon_genus_name ||
             rec.iconic_taxon_name ||
-            "未分类记录"
+            "未分類記錄"
           );
         }
 
@@ -358,39 +358,39 @@
         }
 
         function popupHtml(rec) {
-          const cat = CATS[rec.cat] ? CATS[rec.cat].label : "未分类";
+          const cat = CATS[rec.cat] ? CATS[rec.cat].label : "未分類";
           const cn = chineseName(rec);
           return (
             `<div class="popup-title">${escapeHtml(displayName(rec))}</div>` +
             `<div class="popup-grid">` +
             `<span>ID</span><span>${escapeHtml(rec.id)}</span>` +
-            `<span>中文名</span><span>${escapeHtml(cn || "暂未匹配")}</span>` +
-            `<span>学名</span><span><i>${escapeHtml(scientificName(rec))}</i></span>` +
-            `<span>状态</span><span>${rec.status === "abnormal" ? "异常数据" : "正确数据"}</span>` +
-            `<span>类别</span><span>${escapeHtml(cat)} / ${escapeHtml(rec.iconic_taxon_name)}</span>` +
+            `<span>中文名</span><span>${escapeHtml(cn || "暫未匹配")}</span>` +
+            `<span>學名</span><span><i>${escapeHtml(scientificName(rec))}</i></span>` +
+            `<span>狀態</span><span>${rec.status === "abnormal" ? "異常數據" : "正確數據"}</span>` +
+            `<span>類別</span><span>${escapeHtml(cat)} / ${escapeHtml(rec.iconic_taxon_name)}</span>` +
             `<span>日期</span><span>${escapeHtml(rec.observed_on)}</span>` +
-            `<span>时间</span><span>${escapeHtml(rec.time_observed_at)}</span>` +
-            `<span>属</span><span>${escapeHtml(rec.taxon_genus_name)}</span>` +
+            `<span>時間</span><span>${escapeHtml(rec.time_observed_at)}</span>` +
+            `<span>屬</span><span>${escapeHtml(rec.taxon_genus_name)}</span>` +
             `<span>科</span><span>${escapeHtml(rec.taxon_family_name)}</span>` +
             `<span>目</span><span>${escapeHtml(rec.taxon_order_name)}</span>` +
-            `<span>经纬度</span><span>${rec.lng}, ${rec.lat}</span>` +
+            `<span>經緯度</span><span>${rec.lng}, ${rec.lat}</span>` +
             `</div>`
           );
         }
 
         function tooltipHtml(rec) {
-          const cat = CATS[rec.cat] ? CATS[rec.cat].label : "未分类";
+          const cat = CATS[rec.cat] ? CATS[rec.cat].label : "未分類";
           const cn = chineseName(rec);
           return (
             `<div class="tip-title">${escapeHtml(displayName(rec))}</div>` +
             `<div class="tip-row">` +
-            `<span>中文</span><span>${escapeHtml(cn || "暂未匹配")}</span>` +
-            `<span>学名</span><span><i>${escapeHtml(scientificName(rec))}</i></span>` +
-            `<span>状态</span><span>${rec.status === "abnormal" ? "异常数据" : "正确数据"}</span>` +
-            `<span>类别</span><span>${escapeHtml(cat)} / ${escapeHtml(rec.iconic_taxon_name)}</span>` +
+            `<span>中文</span><span>${escapeHtml(cn || "暫未匹配")}</span>` +
+            `<span>學名</span><span><i>${escapeHtml(scientificName(rec))}</i></span>` +
+            `<span>狀態</span><span>${rec.status === "abnormal" ? "異常數據" : "正確數據"}</span>` +
+            `<span>類別</span><span>${escapeHtml(cat)} / ${escapeHtml(rec.iconic_taxon_name)}</span>` +
             `<span>日期</span><span>${escapeHtml(rec.observed_on || rec.time_observed_at)}</span>` +
-            `<span>属科</span><span>${escapeHtml(rec.taxon_genus_name || "未记录")} / ${escapeHtml(rec.taxon_family_name || "未记录")}</span>` +
-            `<span>坐标</span><span>${rec.lng}, ${rec.lat}</span>` +
+            `<span>屬科</span><span>${escapeHtml(rec.taxon_genus_name || "未記錄")} / ${escapeHtml(rec.taxon_family_name || "未記錄")}</span>` +
+            `<span>座標</span><span>${rec.lng}, ${rec.lat}</span>` +
             `</div>`
           );
         }
